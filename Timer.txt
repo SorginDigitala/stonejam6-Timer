@@ -27,12 +27,25 @@ func isLevel()
   ?loc=x
    return false
  return !loc.isQuest
+ 
+func parseFrames(frames,padM)
+ return parseTime(frames/30,padM)
+
+func parseTime(x,padM)
+ var minutes
+ var seconds
+ minutes=math.FloorToInt(x/60)+""
+ ?padM
+  minutes=stringExt.PadL(minutes,2,"0")
+ seconds=stringExt.PadL(math.FloorToInt(x%60)+"",2,"0")
+ return minutes+":"+seconds
+ 
 
 var coordsX
 var coordsY
 var coords2Y
 
-?!utils.isLevel()
+?!isLevel()
  return
 
 // load data
@@ -272,9 +285,9 @@ func Format(x)
  ?config[0]=0
   return stringExt.PadL(x+"f",5," ")
  :?config[0]=1
-  return utils.parseFrames(x,false)
+  return parseFrames(x,false)
  :?config[0]=2
-  return utils.parseFrames(x,false)+"."+stringExt.PadL((x%30)+"",2,"0")+"f"
+  return parseFrames(x,false)+"."+stringExt.PadL((x%30)+"",2,"0")+"f"
 
 
 
