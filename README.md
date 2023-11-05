@@ -7,4 +7,5 @@ A simple (and unfinished) Timer for StoneScript
 To test:
 
 sys.SetFileUrl("https://sorgindigitala.github.io/stonejam6-Timer/")
+
 import Timer
